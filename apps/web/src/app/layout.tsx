@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@mui/material";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 import theme from "../theme";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v16-appRouter";
 
@@ -25,6 +25,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <AppRouterCacheProvider>
         <ThemeProvider theme={theme}>
+          <CssBaseline />
           <body className="">{children}</body>
         </ThemeProvider>
       </AppRouterCacheProvider>
