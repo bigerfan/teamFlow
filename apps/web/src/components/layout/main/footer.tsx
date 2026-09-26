@@ -19,7 +19,7 @@ export default function Footer() {
     <Box
       component="footer"
       sx={{
-        mt: 10,
+        // mt: 10,
         borderTop: "1px solid",
         borderColor: "divider",
       }}

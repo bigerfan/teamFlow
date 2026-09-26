@@ -51,7 +51,7 @@ const Header = () => {
 
             <Button
               component={Link}
-              href="/register"
+              href="/auth/signup"
               variant="contained"
               sx={{ px: 2.5 }}
             >
