@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@mui/material";
 import theme from "../theme";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v16-appRouter";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,9 +26,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="fa"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <ThemeProvider theme={theme}>
-        <body className="min-h-full flex flex-row w-[20%]">{children}</body>
-      </ThemeProvider>
+      <AppRouterCacheProvider>
+        <ThemeProvider theme={theme}>
+          <body className="">{children}</body>
+        </ThemeProvider>
+      </AppRouterCacheProvider>
     </html>
   );
 }
