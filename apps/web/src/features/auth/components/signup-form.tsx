@@ -7,19 +7,13 @@ import {
   Box,
   Button,
   CssVarsTheme,
-  FormControl,
-  FormHelperText,
-  InputAdornment,
-  InputLabel,
-  MenuItem,
   Paper,
-  Select,
   TextField,
   Typography,
 } from "@mui/material";
-import BadgeOutlinedIcon from "@mui/icons-material/BadgeOutlined";
-
-import { signupSchema, type SignupFormData } from "../validations";
+import { SignupUserData, userSignupSchema } from "@teamFlow/shared";
+import { toast } from "react-toastify";
+import { createUser } from "../actions";
 
 const fieldSx = {
   "& .MuiOutlinedInput-root": {
@@ -40,8 +34,8 @@ export default function SignupForm() {
     control,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<SignupFormData>({
-    resolver: zodResolver(signupSchema),
+  } = useForm<SignupUserData>({
+    resolver: zodResolver(userSignupSchema),
     defaultValues: {
       username: "",
       email: "",
@@ -50,8 +44,12 @@ export default function SignupForm() {
     },
   });
 
-  const onSubmit = async (data: SignupFormData) => {
-    console.log(data);
+  const onSubmit = async (data: SignupUserData) => {
+    try {
+      await createUser(data);
+    } catch (error) {
+      toast.error("something went wrong");
+    }
     // later:
     // await signup(data);
   };

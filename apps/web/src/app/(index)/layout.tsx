@@ -1,4 +1,4 @@
-import MainLayout from "@/src/components/layout/main";
+import MainLayout from "@/src/features/layout/main";
 import React, { ReactNode } from "react";
 
 const Layout = ({ children }: { children: ReactNode }) => {
